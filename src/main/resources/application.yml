@@ -1,0 +1,36 @@
+---
+micronaut:
+  application:
+    name: cn-elmi-app
+
+---
+micronaut:
+  security:
+    enabled: true
+    endpoints:
+      login:
+        enabled: true
+      oauth:
+        enabled: true
+    token:
+      jwt:
+        enabled: true
+        signatures:
+          secret:
+            generator:
+              secret: "${JWT_GENERATOR_SIGNATURE_SECRET:pleaseChangeThisSecretForANewOne}"
+
+---
+redis:
+  uri: redis://localhost
+
+---
+postgres:
+  reactive:
+    client:
+      port: 5432
+      host: localhost
+      database: ddd-app
+#      user: user
+#      password: password
+#      maxSize: 5
