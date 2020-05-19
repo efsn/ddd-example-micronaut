@@ -1,24 +1,41 @@
----
 micronaut:
   application:
     name: cn-elmi-app
 
----
-micronaut:
   security:
+    intercept-url-map:
+      - pattern: /images/*
+        http-method: GET
+        access:
+          - isAnonymous()
+
     enabled: true
+    ip-patterns:
+      - 127.0.0.1
+      - 192.168.1.*
     endpoints:
       login:
         enabled: true
       oauth:
         enabled: true
+
     token:
       jwt:
         enabled: true
+        generator:
+          refresh-token-expiration: 1800
+          access-token-expiration: 1800
         signatures:
+          jwks:
+            awscognito:
+              url: "https://jwks.json"
           secret:
             generator:
               secret: "${JWT_GENERATOR_SIGNATURE_SECRET:pleaseChangeThisSecretForANewOne}"
+              jws-algorithm: HS256
+
+pem:
+  path: rsa-pair.pem
 
 ---
 redis:

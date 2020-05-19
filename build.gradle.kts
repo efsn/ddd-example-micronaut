@@ -32,7 +32,6 @@ allprojects {
         implementation(kotlin("reflect"))
 
         implementation(platform("io.micronaut:micronaut-bom:$micronautVersion"))
-        implementation("io.micronaut:micronaut-security-jwt")
         implementation("io.micronaut:micronaut-http-client")
         implementation("io.micronaut:micronaut-http-server-netty")
         implementation("io.micronaut:micronaut-runtime")
