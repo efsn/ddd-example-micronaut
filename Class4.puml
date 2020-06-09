@@ -1,0 +1,52 @@
+@startuml
+
+package examination {
+
+    class Examination <<Aggregate Root>> {
+        id: Long
+        teacherId: Long
+        createTime: Datetime
+        startTime: Datetime
+        endTime: Datetime
+        paper: Paper
+
+        create()
+    }
+
+    class Paper <<Value Object>> {
+        templatePaperId: Long
+        blankQuiz: List<BlankQuiz>
+    }
+
+    Examination "1"*--"1" Paper
+}
+
+package paper {
+
+    class PaperTemplate <<Aggregate Root>> {
+        blankQuizIdList: List<Long>
+
+        assemble()
+        reassemble()
+    }
+
+    class BlankQuiz <<Value Object>>
+
+    PaperTemplate "1"*--"5..20" BlankQuiz
+}
+
+package answer.sheet {
+
+    class AnswerSheet <<Aggregate Root>> {
+        answerSheetId: Long
+        studentId: Long
+        score: Int
+
+        assignStudent()
+        handIn()
+        submit()
+        review(): Int
+    }
+}
+
+@enduml

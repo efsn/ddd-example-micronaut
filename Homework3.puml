@@ -1,0 +1,24 @@
+@startuml
+
+package demo <<Aggregate>> {
+    interface Runnable{
+        void run()
+    }
+
+    abstract class Animal
+
+    class Dog{
+        public String name
+        public void run()
+    }
+
+    class Cat{
+        #{public} String name
+        #{public} void run()
+    }
+
+    Runnable <|-- Animal
+    Animal <|-- Dog
+    Animal <|-- Cat
+}
+@enduml
