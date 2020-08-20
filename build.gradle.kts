@@ -1,11 +1,11 @@
 plugins {
-    val kotlinVersion = "1.3.72"
+    val kotlinVersion = "1.4.0"
 
     application
     kotlin("jvm") version kotlinVersion
     kotlin("kapt") version kotlinVersion
     kotlin("plugin.allopen") version kotlinVersion
-    id("com.github.johnrengelman.shadow") version "5.2.0"
+    id("com.github.johnrengelman.shadow") version "6.0.0"
 }
 
 group = "cn.elmi.example.ddd"
@@ -26,7 +26,7 @@ allprojects {
     configurations.create("developmentOnly")
 
     dependencies {
-        val micronautVersion = "2.0.0.M3"
+        val micronautVersion = "2.0.1"
 
         implementation(kotlin("stdlib-jdk8"))
         implementation(kotlin("reflect"))
