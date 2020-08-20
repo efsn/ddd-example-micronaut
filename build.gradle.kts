@@ -26,7 +26,7 @@ allprojects {
     configurations.create("developmentOnly")
 
     dependencies {
-        val micronautVersion = "2.0.1"
+        val micronautVersion = "2.0.0.M3"
 
         implementation(kotlin("stdlib-jdk8"))
         implementation(kotlin("reflect"))
